@@ -57,9 +57,11 @@ class App extends Component {
     toggleProperty(arr, id, propName){
         const idx = arr.findIndex((el) => el.id === id);
 
+        // 1. update Object
         const oldItem = arr[idx];
         const newItem = {... oldItem, [propName]: !oldItem[propName]};
 
+        // 2. construct new Array
         return [
             ... arr.slice(0, idx), 
             newItem,
@@ -85,7 +87,20 @@ class App extends Component {
     }
 
     onToggleImportant = (id) => {
-        console.log("ToggleImportant", id)
+        this.setState(({ todoData }) => {
+        //     const idx = todoData.findIndex((el) => el.id === id);      Variant 1
+
+        //     // 1. update Object
+        //     const oldItem = todoData[idx];
+        //     const newItem = {... oldItem, done: !oldItem.important}
+
+        //     // 2. construct new Array
+        //     const newArray = [...todoData.slice(0,idx), newItem, ...todoData.slice(idx + 1)];
+
+            return {
+                todoData: this.toggleProperty(todoData, id, 'important')    // Variant 2
+            }
+        })
     }
 
     render(){

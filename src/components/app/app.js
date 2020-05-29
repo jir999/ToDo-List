@@ -59,11 +59,11 @@ class App extends Component {
 
         // 1. update Object
         const oldItem = arr[idx];
-        const newItem = {... oldItem, [propName]: !oldItem[propName]};
+        const newItem = {...oldItem, [propName]: !oldItem[propName]};  // ['done'] : !oldItem['done']
 
         // 2. construct new Array
         return [
-            ... arr.slice(0, idx), 
+            ...arr.slice(0, idx), 
             newItem,
             ...arr.slice(idx + 1)
         ];

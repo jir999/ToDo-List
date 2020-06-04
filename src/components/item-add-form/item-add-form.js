@@ -10,7 +10,7 @@ export default class ItemAddForm extends Component{
 
     onLabelChange = (e) => {
         this.setState({
-            label: e.target.value.toUpperCase()
+            label: e.target.value
         })
     }
 
@@ -32,9 +32,7 @@ export default class ItemAddForm extends Component{
                        onChange={this.onLabelChange}
                        placeholder="What needs to be done"
                        value={this.state.label} />     
-                <button 
-                    className="btn btn-outline-secondary"
-                    onClick={() => onItemAdded("Hello World")} >
+                <button className="btn btn-outline-secondary" >
                         Add Item  
                 </button>
             </form>
